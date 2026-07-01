@@ -250,7 +250,7 @@
     11: {
       num: '11 — KITE MAKING',
       name: 'カイト制作',
-      img: 'images/bickite5.jpeg',
+      img: 'images/bickite5.jpg',
       meta: [],
       sections: [
         { heading: '◆ ビッグカイト制作', bullet: true, items: [
@@ -471,6 +471,70 @@
         document.body.style.animation = '';
       }
     }, 80);
+  }
+
+  /* ----------------------------------------------------------
+     CONTACT FORM TOGGLE
+     ---------------------------------------------------------- */
+  const cfToggleBtn = document.getElementById('cf-toggle-btn');
+  const cfWrap       = document.getElementById('cf-wrap');
+
+  if (cfToggleBtn && cfWrap) {
+    cfToggleBtn.addEventListener('click', function () {
+      cfWrap.hidden = false;
+      cfWrap.classList.add('show');
+      cfToggleBtn.style.display = 'none';
+      const firstField = document.getElementById('cf-name');
+      cfWrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (firstField) {
+        setTimeout(function () { firstField.focus(); }, 400);
+      }
+    });
+  }
+
+  /* ----------------------------------------------------------
+     CONTACT FORM (Formspree AJAX submit)
+     ---------------------------------------------------------- */
+  const contactForm = document.getElementById('contact-form');
+  const cfStatus     = document.getElementById('cf-status');
+  const cfSubmitBtn  = document.getElementById('cf-submit');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      cfStatus.textContent = '';
+      cfStatus.className = 'cf-status';
+      cfSubmitBtn.disabled = true;
+      cfSubmitBtn.textContent = '送信中...⏳';
+
+      const formData = new FormData(contactForm);
+
+      fetch(contactForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      })
+        .then(function (response) {
+          if (response.ok) {
+            contactForm.reset();
+            cfStatus.textContent = '✅ 送信しました！ご連絡をお待ちください。';
+            cfStatus.classList.add('ok');
+          } else {
+            return response.json().then(function (data) {
+              throw new Error((data && data.errors) ? data.errors.map(function (er) { return er.message; }).join(', ') : '送信に失敗しました');
+            });
+          }
+        })
+        .catch(function () {
+          cfStatus.textContent = '⚠️ 送信に失敗しました。お手数ですがお電話にてご連絡ください。';
+          cfStatus.classList.add('err');
+        })
+        .finally(function () {
+          cfSubmitBtn.disabled = false;
+          cfSubmitBtn.textContent = '📩 今すぐ問い合わせる！';
+        });
+    });
   }
 
 })();

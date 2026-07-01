@@ -205,7 +205,7 @@
       </div>
 
       <div class="ac ac-11" data-program="11">
-        <img src="images/bickite3.jpeg" alt="カイト制作">
+        <img src="images/bickite3.jpg" alt="カイト制作">
         <div class="ac-body">
           <div class="ac-name">カイト制作（ビッグカイト／オリジナルカイト）</div>
           <div class="ac-desc">世界チャンピオン監修のオーダーメイド大型カイトから、自分だけのオリジナルカイトまで</div>
@@ -294,7 +294,74 @@
         <div class="val">子ども〜大人まで</div>
       </div>
     </div>
-    <a class="btn-contact" href="#">📩 今すぐ問い合わせる！</a>
+
+    <!-- ===== CONTACT CTA ===== -->
+    <button type="button" class="btn-contact" id="cf-toggle-btn">📩 今すぐ問い合わせる！</button>
+
+    <!-- ===== CONTACT FORM ===== -->
+    <div class="contact-form-wrap" id="cf-wrap" hidden>
+      <form id="contact-form" class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <input type="hidden" name="_subject" value="【カイト村】お問合せフォームより">
+        <input type="text" name="_gotcha" style="display:none">
+
+        <div class="cf-row">
+          <div class="cf-field">
+            <label for="cf-name">お名前 <span class="cf-req">必須</span></label>
+            <input type="text" id="cf-name" name="お名前" required placeholder="山田 太郎">
+          </div>
+          <div class="cf-field">
+            <label for="cf-phone">お電話番号</label>
+            <input type="tel" id="cf-phone" name="電話番号" placeholder="090-1234-5678">
+          </div>
+        </div>
+
+        <div class="cf-field">
+          <label for="cf-email">メールアドレス <span class="cf-req">必須</span></label>
+          <input type="email" id="cf-email" name="メールアドレス" required placeholder="example@mail.com">
+        </div>
+
+        <div class="cf-field">
+          <label>ご希望の連絡方法 <span class="cf-req">必須</span></label>
+          <div class="cf-radio-row">
+            <label class="cf-radio"><input type="radio" name="希望連絡方法" value="電話" required> 📞 電話</label>
+            <label class="cf-radio"><input type="radio" name="希望連絡方法" value="メール" required> 📧 メール</label>
+          </div>
+        </div>
+
+        <div class="cf-row">
+          <div class="cf-field">
+            <label for="cf-program">ご希望の体験プログラム</label>
+            <select id="cf-program" name="希望プログラム">
+              <option value="未定・相談したい">未定・相談したい</option>
+              <option value="スポーツカイト体験">スポーツカイト体験</option>
+              <option value="カヤック体験">カヤック体験</option>
+              <option value="SUP体験">SUP体験</option>
+              <option value="パラグライダー体験">パラグライダー体験</option>
+              <option value="クラフト体験">クラフト体験</option>
+              <option value="セグウェイ体験">セグウェイ体験</option>
+              <option value="熱気球搭乗体験">熱気球搭乗体験</option>
+              <option value="ヘリコプター搭乗体験">ヘリコプター搭乗体験</option>
+              <option value="イベント参加">イベント参加</option>
+              <option value="ウォーターパーク">ウォーターパーク</option>
+              <option value="カイト制作">カイト制作</option>
+            </select>
+          </div>
+          <div class="cf-field">
+            <label for="cf-date">希望日時（任意）</label>
+            <input type="text" id="cf-date" name="希望日時" placeholder="例：8月上旬の週末">
+          </div>
+        </div>
+
+        <div class="cf-field">
+          <label for="cf-message">お問合せ内容 <span class="cf-req">必須</span></label>
+          <textarea id="cf-message" name="お問合せ内容" rows="5" required placeholder="参加人数やご質問などをご記入ください"></textarea>
+        </div>
+
+        <button type="submit" class="btn-contact" id="cf-submit">送信する</button>
+
+        <p class="cf-status" id="cf-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
   </section>
 
   <!-- ===== FOOTER ===== -->
