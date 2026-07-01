@@ -250,7 +250,7 @@
     11: {
       num: '11 — KITE MAKING',
       name: 'カイト制作',
-      img: 'images/bickite5.JPeG',
+      img: 'images/bickite5.jpeg',
       meta: [],
       sections: [
         { heading: '◆ ビッグカイト制作', bullet: true, items: [
