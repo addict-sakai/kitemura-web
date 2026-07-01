@@ -209,8 +209,16 @@ nav {
   text-decoration: none;
   letter-spacing: 2px;
   text-shadow: 3px 3px 0 var(--coral);
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   animation: wiggle 2s ease-in-out infinite;
+}
+.nav-logo-img {
+  height: 38px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(2px 2px 0 var(--coral));
 }
 .nav-logo span {
   color: var(--sky);
@@ -260,7 +268,7 @@ nav {
   position: absolute;
   inset: 0;
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: 3px;
 }
@@ -685,10 +693,11 @@ nav {
 .ac-4  { grid-column: span 2; }
 .ac-5  { grid-column: span 2; }
 .ac-6  { grid-column: span 3; grid-row: span 2; }
-.ac-7  { grid-column: span 3; }
-.ac-8  { grid-column: span 4; grid-row: span 2; }
+.ac-7  { grid-column: span 3; grid-row: span 2; }
+.ac-8  { grid-column: span 2; }
 .ac-9  { grid-column: span 2; }
 .ac-10 { grid-column: span 2; }
+.ac-11 { grid-column: span 6; grid-row: span 2; }
 
 /* photo cards */
 .ac {
@@ -796,13 +805,52 @@ nav {
 }
 
 .gc { border-radius: 8px; overflow: hidden; position: relative; cursor: pointer; }
-.gc:nth-child(1) { grid-column: span 5; grid-row: span 2; }
-.gc:nth-child(2) { grid-column: span 3; }
-.gc:nth-child(3) { grid-column: span 4; grid-row: span 2; }
-.gc:nth-child(4) { grid-column: span 3; }
-.gc:nth-child(5) { grid-column: span 4; grid-row: span 2; }
-.gc:nth-child(6) { grid-column: span 4; grid-row: span 2; }
-.gc:nth-child(7) { grid-column: span 4; grid-row: span 2; }
+
+/* ---- Cycle A (items 1-16) ---- */
+/* Block A1 (rows 1-2): large hero + stacked pair */
+.gc:nth-child(1)  { grid-column: span 7; grid-row: span 2; }
+.gc:nth-child(2)  { grid-column: span 5; }
+.gc:nth-child(3)  { grid-column: span 5; }
+/* Block B1 (row 3): four even tiles */
+.gc:nth-child(4)  { grid-column: span 3; }
+.gc:nth-child(5)  { grid-column: span 3; }
+.gc:nth-child(6)  { grid-column: span 3; }
+.gc:nth-child(7)  { grid-column: span 3; }
+/* Block C1 (rows 4-5): triptych of tall tiles */
+.gc:nth-child(8)  { grid-column: span 4; grid-row: span 2; }
+.gc:nth-child(9)  { grid-column: span 4; grid-row: span 2; }
+.gc:nth-child(10) { grid-column: span 4; grid-row: span 2; }
+/* Block D1 (row 6): four even tiles */
+.gc:nth-child(11) { grid-column: span 3; }
+.gc:nth-child(12) { grid-column: span 3; }
+.gc:nth-child(13) { grid-column: span 3; }
+.gc:nth-child(14) { grid-column: span 3; }
+/* Block E1 (rows 7-8): featured pair */
+.gc:nth-child(15) { grid-column: span 5; grid-row: span 2; }
+.gc:nth-child(16) { grid-column: span 7; grid-row: span 2; }
+
+/* ---- Cycle B (items 17-30), mirrored rhythm ---- */
+/* Block A2 (rows 9-10): stacked pair + large hero (mirrored) */
+.gc:nth-child(17) { grid-column: span 5; grid-row: span 2; }
+.gc:nth-child(18) { grid-column: span 7; }
+.gc:nth-child(19) { grid-column: span 7; }
+/* Block B2 (row 11): four even tiles */
+.gc:nth-child(20) { grid-column: span 3; }
+.gc:nth-child(21) { grid-column: span 3; }
+.gc:nth-child(22) { grid-column: span 3; }
+.gc:nth-child(23) { grid-column: span 3; }
+/* Block C2 (rows 12-13): triptych of tall tiles */
+.gc:nth-child(24) { grid-column: span 4; grid-row: span 2; }
+.gc:nth-child(25) { grid-column: span 4; grid-row: span 2; }
+.gc:nth-child(26) { grid-column: span 4; grid-row: span 2; }
+/* Block D2 (row 14): four even tiles */
+.gc:nth-child(27) { grid-column: span 3; }
+.gc:nth-child(28) { grid-column: span 3; }
+.gc:nth-child(29) { grid-column: span 3; }
+.gc:nth-child(30) { grid-column: span 3; }
+
+/* ---- Grand finale: video, full width ---- */
+.gc:nth-child(31) { grid-column: span 12; grid-row: span 2; }
 
 .gc img {
   width: 100%;
@@ -819,6 +867,25 @@ nav {
 }
 .gc:hover img {
   filter: saturate(2) contrast(1.2) brightness(1.1);
+}
+
+.gc-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(1.2) contrast(1.05);
+}
+.gc-video-badge {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 1rem 1.2rem;
+  background: linear-gradient(0deg, rgba(8,8,15,0.9) 0%, transparent 100%);
+  font-family: 'Permanent Marker', cursive;
+  letter-spacing: 2px;
+  color: var(--sun);
+  font-size: 1rem;
+  text-shadow: 2px 2px 0 var(--deep);
 }
 
 /* Lightbox */
@@ -840,6 +907,16 @@ nav {
   border-radius: 6px;
   box-shadow: 0 0 60px rgba(255,214,0,0.3);
 }
+.lightbox video {
+  max-width: 88vw;
+  max-height: 88vh;
+  border: 4px solid var(--sun);
+  border-radius: 6px;
+  box-shadow: 0 0 60px rgba(255,214,0,0.3);
+  display: none;
+}
+.lightbox.video-mode img { display: none; }
+.lightbox.video-mode video { display: block; }
 .lb-close {
   position: absolute;
   top: 1.5rem; right: 2rem;
@@ -1013,8 +1090,16 @@ footer {
   letter-spacing: 3px;
   margin-bottom: 0.5rem;
   text-shadow: 3px 3px 0 var(--coral);
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
   animation: wiggle 2s ease-in-out infinite;
+}
+.footer-logo-img {
+  height: 48px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(2px 2px 0 var(--coral));
 }
 .footer-logo span {
   color: var(--sky);
@@ -1033,6 +1118,216 @@ footer p + p {
    RESPONSIVE
    ============================================================ */
 
+/* ============================================================
+   PROGRAM DETAIL MODAL
+   ============================================================ */
+
+.prog-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 1000;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 4rem 1.5rem;
+  overflow-y: auto;
+}
+.prog-modal.active { display: flex; }
+
+.prog-modal-inner {
+  background: var(--deep);
+  width: 100%;
+  max-width: 880px;
+  border: 4px solid var(--sun);
+  border-radius: 14px;
+  box-shadow: 0 0 70px rgba(255,214,0,0.25);
+  position: relative;
+  overflow: hidden;
+  animation: stamp 0.4s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+.prog-modal-close {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  z-index: 3;
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: rgba(8,8,15,0.7);
+  border: 2px solid var(--sun);
+  color: var(--white);
+  font-family: 'Permanent Marker', cursive;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.prog-modal-close:hover {
+  background: var(--sun);
+  color: var(--deep);
+  transform: rotate(90deg);
+}
+
+.prog-modal-media {
+  position: relative;
+  height: 280px;
+  background: linear-gradient(135deg, #1a003a, #3d0080);
+}
+.prog-modal-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(1.3) contrast(1.05) brightness(0.75);
+}
+.prog-modal-media.no-img img { display: none; }
+.prog-modal-icon {
+  display: none;
+  position: absolute;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  font-size: 6rem;
+  opacity: 0.4;
+}
+.prog-modal-media.no-img .prog-modal-icon { display: flex; }
+.prog-modal-media-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, var(--deep) 0%, transparent 60%);
+}
+
+.prog-modal-content {
+  padding: 1.5rem 2.2rem 2.5rem;
+  position: relative;
+  margin-top: -2.5rem;
+  z-index: 1;
+}
+
+.prog-modal-num {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 0.8rem;
+  letter-spacing: 4px;
+  color: var(--sun);
+  display: block;
+  margin-bottom: 0.4rem;
+  text-shadow: 2px 2px 0 var(--deep);
+}
+
+.prog-modal-title {
+  font-family: 'Permanent Marker', cursive;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  line-height: 1.1;
+  color: var(--white);
+  text-shadow: 3px 3px 0 var(--coral);
+  margin-bottom: 1.2rem;
+}
+
+.pm-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+.pm-chip {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  padding: 6px 16px;
+  border-radius: 30px;
+  box-shadow: 3px 3px 0 var(--deep);
+  transform: rotate(-1deg);
+  background: var(--sun);
+  color: var(--deep);
+}
+.pm-chip:nth-child(even) {
+  background: var(--sky);
+  transform: rotate(1deg);
+}
+.pm-chip:nth-child(3n) {
+  background: var(--lime);
+  transform: rotate(-1deg);
+}
+.pm-chip b { font-weight: 900; }
+
+.pm-sections { margin-bottom: 1.2rem; }
+
+.pm-section-heading {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  color: var(--sky);
+  margin: 1.4rem 0 0.7rem;
+}
+.pm-section-heading:first-child { margin-top: 0; }
+
+.pm-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.pm-item {
+  background: rgba(255,255,255,0.04);
+  border-left: 4px solid var(--magenta);
+  border-radius: 0 8px 8px 0;
+  padding: 0.7rem 1rem;
+}
+.pm-item-title {
+  font-weight: 900;
+  color: var(--white);
+  font-size: 0.92rem;
+  margin-bottom: 2px;
+}
+.pm-item-desc {
+  color: rgba(255,255,255,0.75);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.pm-item-numbered {
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+  border-left-color: var(--sun);
+}
+.pm-num-badge {
+  flex-shrink: 0;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--sun);
+  color: var(--deep);
+  font-family: 'Permanent Marker', cursive;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 2px 0 var(--deep);
+}
+
+.pm-item-bullet {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  border-left-color: var(--lime);
+}
+.pm-bullet {
+  color: var(--lime);
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  margin-top: 2px;
+}
+
+.prog-modal-note {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.55);
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+.prog-modal-note:empty { display: none; }
+
 @media (max-width: 900px) {
   .champ-inner {
     grid-template-columns: 1fr;
@@ -1043,7 +1338,7 @@ footer p + p {
     grid-auto-rows: 200px;
   }
   .ac-1, .ac-2, .ac-3, .ac-4, .ac-5,
-  .ac-6, .ac-7, .ac-8, .ac-9, .ac-10 {
+  .ac-6, .ac-7, .ac-8, .ac-9, .ac-10, .ac-11 {
     grid-column: span 1;
     grid-row: span 1;
   }
@@ -1070,4 +1365,7 @@ footer p + p {
   }
   .nav-links { display: none; }
   .contact-section { padding: 3rem 1.5rem; }
+  .prog-modal { padding: 1.5rem 0.8rem; }
+  .prog-modal-content { padding: 1.2rem 1.3rem 1.8rem; }
+  .prog-modal-media { height: 200px; }
 }
